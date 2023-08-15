@@ -2,9 +2,13 @@ const image1Path = "./h3c-logo-modified.png";
 const image2Input = document.getElementById("image2Input");
 const mergeButton = document.getElementById("mergeButton");
 const mergedCanvas = document.getElementById("mergedCanvas");
+const downloadButton = document.getElementById("downloadButton");
+
 const ctx = mergedCanvas.getContext("2d");
 
 mergeButton.addEventListener("click", mergeImages);
+
+downloadButton.addEventListener("click", downloadCanvasAsImage);
 
 function mergeImages() {
     const image2Input = document.getElementById("image2Input");
@@ -58,6 +62,14 @@ function mergeImages() {
             ctx.drawImage(bottomImage, bottomImageX, bottomImageY, bottomImageWidth, bottomImageHeight);
         };
     };
+}
+
+function downloadCanvasAsImage() {
+    const dataURL = mergedCanvas.toDataURL("image/jpeg");
+    const link = document.createElement("a");
+    link.href = dataURL;
+    link.download = "canvas_image.jpg";
+    link.click();
 }
 
 // mergeImages();
