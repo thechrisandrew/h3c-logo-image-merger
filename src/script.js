@@ -65,11 +65,8 @@ function mergeImages() {
 }
 
 function downloadCanvasAsImage() {
-    const dataURL = mergedCanvas.toDataURL("image/jpeg");
-    const link = document.createElement("a");
-    link.href = dataURL;
-    link.download = "canvas_image.jpg";
-    link.click();
+    const image = mergedCanvas.toDataURL("image/jpeg");
+    this.href = image;
 }
 
 // mergeImages();
